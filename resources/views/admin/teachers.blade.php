@@ -19,29 +19,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ $teacher}}
-                    <table class="table table-striped table-borderless">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>รหัส</th>
-                                <th>ชื่อ-สกุล</th>
-                                <th>ตำแหน่ง</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($teacher as $t)
-                            <th>
-                                <td>{{$t->id}}</td>
-                                <td>{{$t->user_id}}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </th>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <teacher-component :teacher="{{$teacher}}"></teacher-component>
                 </div>
             </div>
         </div>

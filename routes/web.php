@@ -34,9 +34,8 @@ Route::get('/teachers', [\App\Http\Controllers\TeachersController::class, 'index
 Route::get('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'create'])->name('create teachers');
 Route::post('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'store'])->name('post teachers');
 
-Route::get('subjects', function() {
-    return view('admin.subjects');
-});
+Route::get('/subjects', [\App\Http\Controllers\SubjectsController::class, 'index'])->name('subjects');
+Route::get('/subjects/add', [\App\Http\Controllers\SubjectsController::class, 'create'])->name('create subjects');
 
 Route::get('rooms', function() {
     return view('admin.rooms');

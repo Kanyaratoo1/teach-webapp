@@ -24,7 +24,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        return view('admin.student');
+        return view('admin.subjects');
     }
 
     /**
@@ -34,7 +34,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_subject');
     }
 
     /**

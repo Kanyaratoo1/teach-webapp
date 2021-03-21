@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Teachers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
-class TeachersController extends Controller
+class StudentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +27,12 @@ class TeachersController extends Controller
     public function index()
     {
         $data = [
-            'teacher' => Teachers::with('user_id')->get()
+            'student' => User::where([
+                'is_teacher' => false,
+                'is_admin' => false,
+            ])->get(),
         ];
-        return view('admin.teachers', $data);
+        return view('admin.student', $data);
     }
 
     /**
@@ -30,7 +42,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return view('admin.add_teacher');
+        return view('admin.add_student');
     }
 
     /**
@@ -57,36 +69,31 @@ class TeachersController extends Controller
             'usercode' => $request->usercode,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'is_teacher' => true,
         ]);
-
-        $id = User::where(['username' => $request->username])->get()[0]->id;
-        Teachers::create([
-            'user_id' => $id,
-            'description' => $request->description
-        ]);
-
-        return redirect()->route('teachers');
+        return redirect()->route('student');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Teachers  $teachers
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Teachers $teachers)
+    public function show($id)
     {
-        //
+        $data = [
+            'student' => User::where(['id' => $id])->get()[0],
+        ];
+        return view('admin.show_student', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Teachers  $teachers
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teachers $teachers)
+    public function edit($id)
     {
         //
     }
@@ -95,21 +102,28 @@ class TeachersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Teachers  $teachers
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teachers $teachers)
+    public function update(Request $request, $id)
     {
-        //
+        User::where(['id' => $id])->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'username' => $request->username,
+            'usercode' => $request->usercode,
+            'email' => $request->email,
+        ]);
+        return redirect()->route('student');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Teachers  $teachers
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teachers $teachers)
+    public function destroy($id)
     {
         //
     }

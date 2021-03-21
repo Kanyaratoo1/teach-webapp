@@ -13,4 +13,9 @@ class Teachers extends Model
         'user_id',
         'description'
     ];
+
+    public function user_id()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

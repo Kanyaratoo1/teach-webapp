@@ -21,15 +21,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/adminstrator', [App\Http\Controllers\AdministratorController::class, 'index'])->name('administrator');
+Route::get('/administrator', [App\Http\Controllers\AdministratorController::class, 'index'])->name('administrator');
 Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('teacher');
-Route::get('student', function() {
-    return view('admin.student');
-});
 
-Route::get('teachers', function() {
-    return view('admin.teachers');
-});
+Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('student');
+Route::get('/student/add', [App\Http\Controllers\StudentController::class, 'create'])->name('create student');
+Route::post('/student/add', [App\Http\Controllers\StudentController::class, 'store'])->name('post student');
+Route::get('/student/{id}', [App\Http\Controllers\StudentController::class, 'show'])->name('show student');
+Route::post('/student/{id}', [App\Http\Controllers\StudentController::class, 'update'])->name('update student');
+
+Route::get('/teachers', [\App\Http\Controllers\TeachersController::class, 'index'])->name('teachers');
+Route::get('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'create'])->name('create teachers');
+Route::post('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'store'])->name('post teachers');
 
 Route::get('subjects', function() {
     return view('admin.subjects');

@@ -15,7 +15,6 @@ class CreateOnClassRoomsTable extends Migration
     {
         Schema::create('on_class_rooms', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('subject_id')->unsigned();
             $table->bigInteger('student_id')->unsigned();
             $table->bigInteger('room_id')->unsigned();
             $table->date('at_date')->nullable();
@@ -23,7 +22,6 @@ class CreateOnClassRoomsTable extends Migration
             $table->integer('rounds')->nullable()->default(1);
             $table->boolean('is_absent')->nullable()->default(false);
             $table->timestamps();
-            $table->foreign('subject_id')->references('id')->on('subjects');
             $table->foreign('student_id')->references('id')->on('users');
             $table->foreign('room_id')->references('id')->on('class_rooms');
         });

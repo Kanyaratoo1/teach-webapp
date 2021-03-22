@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassRooms;
+use App\Models\SubjectRooms;
 use App\Models\Subjects;
 use App\Models\Teachers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class SubjectsController extends Controller
+class SubjectRoomsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,9 +29,14 @@ class SubjectsController extends Controller
     public function index()
     {
         $data = [
-            'subjects' => Subjects::with('teach_id','teach_id.user_id')->get(),
+            'subject_room' => SubjectRooms::with(
+                'subject_id',
+                'teach_id',
+                'teach_id.user_id',
+                'room_id'
+            )->get(),
         ];
-        return view('admin.subjects', $data);
+        return view('admin.subrooms', $data);
     }
 
     /**
@@ -40,9 +47,11 @@ class SubjectsController extends Controller
     public function create()
     {
         $data = [
-            'teacher' => Teachers::with('user_id')->get(),
+            'subject_id' => Subjects::all(),
+            'teach_id' => Teachers::with('user_id')->get(),
+            'room_id' => ClassRooms::all(),
         ];
-        return view('admin.add_subject', $data);
+        return view('admin.add_subroom', $data);
     }
 
     /**
@@ -56,31 +65,34 @@ class SubjectsController extends Controller
         $v = Validator::make($request->all(), [
             'subject_id' => 'required',
             'teach_id' => 'required',
-            'subject_title' => 'required',
+            'room_id' => 'required',
+            'room_date' => 'required',
+            'room_time' => 'required',
         ]);
 
         if ($v->fails())
         {
-            return $v->getMessageBag();
+            return redirect()->to('subroom/add')->withErrors($v);
         }
 
-        Subjects::create([
+        SubjectRooms::create([
             'subject_id' => $request->subject_id,
             'teach_id' => $request->teach_id,
-            'subject_title' => $request->subject_title,
-            'on_date'=>$request->on_date,
-            'on_time'=>$request->on_time,
+            'room_id' => $request->room_id,
+            'room_date' => $request->room_date,
+            'room_time' => $request->room_time,
         ]);
-        return redirect()->route('subjects');
+
+        return redirect()->route('subroom');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subjects  $subjects
+     * @param  \App\Models\SubjectRooms  $subjectRooms
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SubjectRooms $subjectRooms)
     {
         //
     }
@@ -88,10 +100,10 @@ class SubjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subjects  $subjects
+     * @param  \App\Models\SubjectRooms  $subjectRooms
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subjects $subjects)
+    public function edit(SubjectRooms $subjectRooms)
     {
         //
     }
@@ -100,10 +112,10 @@ class SubjectsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subjects  $subjects
+     * @param  \App\Models\SubjectRooms  $subjectRooms
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SubjectRooms $subjectRooms)
     {
         //
     }
@@ -111,10 +123,10 @@ class SubjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subjects  $subjects
+     * @param  \App\Models\SubjectRooms  $subjectRooms
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SubjectRooms $subjectRooms)
     {
         //
     }

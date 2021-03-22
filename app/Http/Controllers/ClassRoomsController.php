@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassRooms;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClassRoomsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,10 @@ class ClassRoomsController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'class_room' => ClassRooms::all(),
+        ];
+        return view('admin.rooms', $data);
     }
 
     /**
@@ -24,7 +38,7 @@ class ClassRoomsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_rooms');
     }
 
     /**
@@ -35,7 +49,24 @@ class ClassRoomsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $v = Validator::make($request->all(), [
+            'room_title' => 'required',
+            'room_code' => 'required',
+            'room_limits' => 'required',
+        ]);
+
+        if ($v->fails())
+        {
+            return $v->getMessageBag();
+        }
+
+        ClassRooms::create([
+            'room_title' => $request->room_title,
+            'room_code' => $request->room_code,
+            'room_limits' => $request->room_limits,
+        ]);
+
+        return redirect()->route('rooms');
     }
 
     /**
@@ -44,7 +75,7 @@ class ClassRoomsController extends Controller
      * @param  \App\Models\ClassRooms  $classRooms
      * @return \Illuminate\Http\Response
      */
-    public function show(ClassRooms $classRooms)
+    public function show($id)
     {
         //
     }

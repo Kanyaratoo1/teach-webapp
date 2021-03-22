@@ -70,7 +70,8 @@ class LoginController extends Controller
             {
                 return redirect()->route('administrator');
             }
-            return redirect()->route('home');
+
+            return redirect()->route('sublist');
 
         }else{
             return redirect()->route('login')

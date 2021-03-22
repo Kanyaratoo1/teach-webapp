@@ -33,7 +33,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/subjects')}}">ข้อมูลรายวิชา</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ข้อมูลห้องเรียน</a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{{url('/rooms')}}">ห้องเรียน</a>
+                              <a class="dropdown-item" href="{{url('/subroom')}}">ผลการเข้าเรียน</a>
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

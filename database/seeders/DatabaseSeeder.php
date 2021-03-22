@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
         $i = 1;
 
         User::create(['first_name' => 'Administrator', 'last_name' => '', 'username' => 'administrator','usercode'=> '000000000001', 'email' => 'admin@localhost.com','password' => Hash::make($pwd), 'is_admin' => true]);
-        User::create(['first_name' => 'Teacher001', 'last_name' => '', 'username' => 'teacher001','usercode'=> 'T00000000002', 'email' => 'teacher01@localhost.com','password' => Hash::make($pwd), 'is_teacher' => true]);
+        // User::create(['first_name' => 'Teacher001', 'last_name' => '', 'username' => 'teacher001','usercode'=> 'T00000000002', 'email' => 'teacher01@localhost.com','password' => Hash::make($pwd), 'is_teacher' => true]);
         foreach ($data as $u)
         {
             $user_id = "USER" . $i;

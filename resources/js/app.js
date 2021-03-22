@@ -23,6 +23,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('teacher-component', require('./components/TeacherComponent.vue').default);
 Vue.component('teacher-selector-component', require('./components/TeacherSelect.vue').default);
 Vue.component('subjects-list', require('./components/SubjectList.vue').default);
+Vue.component('sub-room', require('./components/SubRoom.vue').default);
+Vue.component('sub-room-list', require('./components/SubRoomList.vue').default);
+Vue.component('on-class-room', require('./components/OnClassRoom.vue').default);
+Vue.component('scan-on-class', require('./components/ScanOnClass.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

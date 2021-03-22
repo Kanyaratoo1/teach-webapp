@@ -14,16 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
-
+Route::get('/', function () {
+    return redirect()->route('home');
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/administrator', [App\Http\Controllers\AdministratorController::class, 'index'])->name('administrator');
 Route::get('/teacher', [App\Http\Controllers\TeacherController::class, 'index'])->name('teacher');
 
+
+//ส่วนของ Administrator
 Route::get('/student', [App\Http\Controllers\StudentController::class, 'index'])->name('student');
 Route::get('/student/add', [App\Http\Controllers\StudentController::class, 'create'])->name('create student');
 Route::post('/student/add', [App\Http\Controllers\StudentController::class, 'store'])->name('post student');
@@ -38,11 +42,25 @@ Route::get('/subjects', [\App\Http\Controllers\SubjectsController::class, 'index
 Route::get('/subjects/add', [\App\Http\Controllers\SubjectsController::class, 'create'])->name('create subjects');
 Route::post('/subjects/add', [\App\Http\Controllers\SubjectsController::class, 'store'])->name('post subjects');
 Route::get('/subjects/{id}', [\App\Http\Controllers\SubjectsController::class, 'show'])->name('show subjects');
+Route::post('/subjects/{id}', [\App\Http\Controllers\SubjectsController::class, 'update'])->name('update subjects');
 
-Route::get('rooms', function() {
-    return view('admin.rooms');
-});
+Route::get('/rooms', [\App\Http\Controllers\ClassRoomsController::class, 'index'])->name('rooms');
+Route::get('/rooms/add', [\App\Http\Controllers\ClassRoomsController::class, 'create'])->name('create room');
+Route::post('/rooms/add', [\App\Http\Controllers\ClassRoomsController::class, 'store'])->name('post room');
+Route::get('/rooms/{id}', [\App\Http\Controllers\ClassRoomsController::class, 'show'])->name('show room');
+Route::post('/rooms/{id}', [\App\Http\Controllers\ClassRoomsController::class, 'show'])->name('update room');
 
-Route::get('results', function() {
-    return view('admin.results');
-});
+Route::get('/subroom', [\App\Http\Controllers\SubjectRoomsController::class, 'index'])->name('subroom');
+Route::get('/subroom/add', [\App\Http\Controllers\SubjectRoomsController::class, 'create'])->name('create subroom');
+Route::post('/subroom/add', [\App\Http\Controllers\SubjectRoomsController::class, 'store'])->name('post subroom');
+Route::get('/subroom/{id}', [\App\Http\Controllers\SubjectRoomsController::class, 'show'])->name('show subroom');
+Route::post('/subroom/{id}', [\App\Http\Controllers\SubjectRoomsController::class, 'update'])->name('update subroom');
+
+//---------------------------->
+
+//สำหรับนักเรียน
+
+Route::get('/sublist',[\App\Http\Controllers\OnClassRoomsController::class, 'sublist'])->name('sublist');
+Route::get('/sublist/{id}',[\App\Http\Controllers\OnClassRoomsController::class, 'get_sublist'])->name('select_sublist');
+Route::get('/checkrooms',[\App\Http\Controllers\OnClassRoomsController::class, 'checkrooms'])->name('checkrooms');
+Route::get('/onroom',[\App\Http\Controllers\OnClassRoomsController::class, 'subroom'])->name('onroom');

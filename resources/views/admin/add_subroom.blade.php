@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <form action="{{url('/subjects/add')}}" method="post">
+            <form action="{{url('/subroom/add')}}" method="post">
                 @csrf
                 <div class="card">
                     <div class="card-header">
-                        {{ __('เพิ่มรายวิชาใหม่') }}
+                        {{ __('เลือกห้องเรียน') }}
                         <div class="float-right">
                             <button type="submit" class="btn btn-sm btn-primary">
                                 {{ __('บันทึกข้อมูล') }}
@@ -16,14 +16,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <div class="from-group">
-                            <teacher-selector-component :teacher="{{$teacher}}"></teacher-selector-component>
-                        </div>
+                        <sub-room
+                        :subject_id="{{$subject_id}}"
+                        :teach_id="{{$teach_id}}"
+                        :room_id="{{$room_id}}"/>
                     </div>
                 </div>
             </form>

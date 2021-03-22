@@ -7,6 +7,7 @@
                     <th>รหัสวิชา</th>
                     <th>หัวข้อ</th>
                     <th>อาจาร์ที่สอน</th>
+                    <th>วันเวลาที่สอน</th>
                     <th></th>
                 </tr>
             </thead>
@@ -16,6 +17,7 @@
                     <td>{{ i.subject_id }}</td>
                     <td>{{ i.subject_title }}</td>
                     <td>{{ i.teach_id.user_id.first_name +' '+ i.teach_id.user_id.last_name}}</td>
+                    <td>{{ i.on_date +' '+ i.on_time}}</td>
                     <td>
                         <a :href="'subjects/'+i.id" type="button" class="btn btn-sm btn-danger">
                             <i class="fas fa-edit"></i>
@@ -29,9 +31,6 @@
 <script>
 export default {
     name: 'SubjectsList',
-    props: [ 'subjects' ],
-    data() {
-
-    },
+    props: [ 'subjects' ]
 }
 </script>

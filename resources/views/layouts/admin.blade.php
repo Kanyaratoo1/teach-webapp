@@ -36,6 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/home')}}">หน้าแรก</a>
                         </li>
+                        @if(Auth::user()->is_admin)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ข้อมูลผู้ใช้งาน</a>
                             <div class="dropdown-menu">
@@ -43,6 +44,7 @@
                               <a class="dropdown-item" href="{{url('/teachers')}}">รายชื่ออาจาร์ย</a>
                             </div>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/subjects')}}">ข้อมูลรายวิชา</a>
                         </li>
@@ -50,7 +52,7 @@
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ข้อมูลห้องเรียน</a>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="{{url('/rooms')}}">ห้องเรียน</a>
-                              <a class="dropdown-item" href="{{url('/results')}}">ผลการเข้าเรียน</a>
+                              <a class="dropdown-item" href="{{url('/subroom')}}">ผลการเข้าเรียน</a>
                             </div>
                         </li>
                     </ul>
@@ -97,7 +99,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
     </div>
-    <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
 </body>
 </html>

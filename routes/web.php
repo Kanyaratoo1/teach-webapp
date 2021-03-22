@@ -62,5 +62,7 @@ Route::post('/subroom/{id}', [\App\Http\Controllers\SubjectRoomsController::clas
 
 Route::get('/sublist',[\App\Http\Controllers\OnClassRoomsController::class, 'sublist'])->name('sublist');
 Route::get('/sublist/{id}',[\App\Http\Controllers\OnClassRoomsController::class, 'get_sublist'])->name('select_sublist');
+Route::get('/sublist/{id}/register',[\App\Http\Controllers\OnClassRoomsController::class, 'register_subjects'])->name('register_subjects');
+Route::post('/sublist/{id}/register',[\App\Http\Controllers\OnClassRoomsController::class, 'register_to_classroom'])->name('register_to_classroom');
 Route::get('/checkrooms',[\App\Http\Controllers\OnClassRoomsController::class, 'checkrooms'])->name('checkrooms');
 Route::get('/onroom',[\App\Http\Controllers\OnClassRoomsController::class, 'subroom'])->name('onroom');

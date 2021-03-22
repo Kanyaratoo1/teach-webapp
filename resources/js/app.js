@@ -27,6 +27,7 @@ Vue.component('sub-room', require('./components/SubRoom.vue').default);
 Vue.component('sub-room-list', require('./components/SubRoomList.vue').default);
 Vue.component('on-class-room', require('./components/OnClassRoom.vue').default);
 Vue.component('scan-on-class', require('./components/ScanOnClass.vue').default);
+Vue.component('register-class', require('./components/RegisterClass.vue').default);
 
 
 

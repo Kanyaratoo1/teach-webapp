@@ -23,7 +23,7 @@ class CreateOnClassRoomsTable extends Migration
             $table->boolean('is_absent')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('student_id')->references('id')->on('users');
-            $table->foreign('room_id')->references('id')->on('class_rooms');
+            $table->foreign('room_id')->references('id')->on('subject_rooms');
         });
     }
 

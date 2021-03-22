@@ -51,9 +51,9 @@ export default {
   name: "SubRoom",
   props: ["subject_id", "teach_id", "room_id"],
   mounted() {
-    console.dir(subject_id);
-    console.dir(teach_id);
-    console.dir(room_id);
+    // console.dir(subject_id);
+    // console.dir(teach_id);
+    // console.dir(room_id);
   },
 };
 </script>

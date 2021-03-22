@@ -18,6 +18,8 @@ class CreateClassRoomsTable extends Migration
             $table->string('room_title');
             $table->string('room_code')->unique();
             $table->integer('room_limits')->default(20);
+            $table->date('room_date')->nullable();
+            $table->time('room_time')->nullable();
             $table->boolean('room_actived')->nullable()->default(false);
             $table->timestamps();
         });

@@ -16,7 +16,11 @@
                     <td>{{ i.subject_id }}</td>
                     <td>{{ i.subject_title }}</td>
                     <td>{{ i.teach_id.user_id.first_name +' '+ i.teach_id.user_id.last_name}}</td>
-                    <td></td>
+                    <td>
+                        <a :href="'subjects/'+i.id" type="button" class="btn btn-sm btn-danger">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

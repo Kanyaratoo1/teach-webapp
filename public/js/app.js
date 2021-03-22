@@ -1904,6 +1904,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'SubjectsList',
   props: ['subjects'],
@@ -37829,7 +37833,16 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("td")
+            _c("td", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-sm btn-danger",
+                  attrs: { href: "subjects/" + i.id, type: "button" }
+                },
+                [_c("i", { staticClass: "fas fa-edit" })]
+              )
+            ])
           ])
         }),
         0

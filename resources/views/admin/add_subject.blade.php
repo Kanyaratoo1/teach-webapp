@@ -8,7 +8,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-header">
-                        {{ __('เพิ่มรายวิชา') }}
+                        {{ __('เพิ่มรายวิชาใหม่') }}
                         <div class="float-right">
                             <button type="submit" class="btn btn-sm btn-primary">
                                 {{ __('บันทึกข้อมูล') }}
@@ -21,47 +21,26 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <div class="from-group row">
-                            <div class="col-md-6">
-                                <label>{{ __('ชื่อ:') }}</label>
-                                <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus/>
-                                @error('first_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="from-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="subject_id">รหัสวิชา:</label>
+                                    <input class="form-control" type="text" id="subject_id" name="subject_id" required autofocus>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="subject_title">รายวิชา:</label>
+                                    <input class="form-control" type="text" id="subject_title" name="subject_title" required>
+                                </div>
+                                <teacher-selector-component :teacher="{{$teacher}}"></teacher-selector-component>
+                                <div class="col-md-6">
+                                    <label for="on_date">วันทีเริ่มสอน:</label>
+                                    <input class="form-control" type="date" id="on_date" name="on_date">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="on_time">เวลาเริ่มสอน:</label>
+                                    <input class="form-control" type="time" id="on_time" name="on_time" required>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label>{{ __('สกุล:') }}</label>
-                                <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name"/>
-                                @error('last_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label>{{ __('รหัสนักศึกษา:') }}</label>
-                                <input id="usercode" type="text" class="form-control @error('usercode') is-invalid @enderror" name="usercode" value="{{ old('usercode') }}" required autocomplete="usercode"/>
-                                @error('usercode')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="form-group">
-                            <label for="username">ชื่อผู้ใช้งาน:</label>
-                            <input type="text" class="form-control" placeholder="ระบุชื่อผู้ใช้งาน" id="username" name="username">
-                          </div>
-                        <div class="form-group">
-                          <label for="email">ที่อยู่เมล์:</label>
-                          <input type="email" class="form-control" placeholder="ระบุที่อยู่เมล์" id="email" name="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" placeholder="ระบุรหัสผ่าน" id="pwd" name="password">
                         </div>
                     </div>
                 </div>

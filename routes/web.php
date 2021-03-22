@@ -36,6 +36,8 @@ Route::post('/teachers/add', [\App\Http\Controllers\TeachersController::class, '
 
 Route::get('/subjects', [\App\Http\Controllers\SubjectsController::class, 'index'])->name('subjects');
 Route::get('/subjects/add', [\App\Http\Controllers\SubjectsController::class, 'create'])->name('create subjects');
+Route::post('/subjects/add', [\App\Http\Controllers\SubjectsController::class, 'store'])->name('post subjects');
+Route::get('/subjects/{id}', [\App\Http\Controllers\SubjectsController::class, 'show'])->name('show subjects');
 
 Route::get('rooms', function() {
     return view('admin.rooms');

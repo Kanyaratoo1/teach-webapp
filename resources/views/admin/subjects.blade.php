@@ -13,16 +13,7 @@
                         </a>
                     </div>
                 </div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('สวัสดี ') . Auth::user()->first_name }}
-                </div>
+                <subjects-list :subjects="{{$subjects}}"/>
             </div>
         </div>
     </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subjects;
+use App\Models\Teachers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SubjectsController extends Controller
 {
@@ -24,7 +26,10 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        return view('admin.subjects');
+        $data = [
+            'subjects' => Subjects::with('teach_id','teach_id.user_id')->get(),
+        ];
+        return view('admin.subjects', $data);
     }
 
     /**
@@ -34,7 +39,10 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        return view('admin.add_subject');
+        $data = [
+            'teacher' => Teachers::with('user_id')->get(),
+        ];
+        return view('admin.add_subject', $data);
     }
 
     /**
@@ -45,7 +53,25 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $v = Validator::make($request->all(), [
+            'subject_id' => 'required',
+            'teach_id' => 'required',
+            'subject_title' => 'required',
+            'on_time' => 'required',
+        ]);
+
+        if ($v->fails())
+        {
+            return $v->getMessageBag();
+        }
+
+        Subjects::create([
+            'subject_id' => $request->subject_id,
+            'teach_id' => $request->teach_id,
+            'subject_title' => $request->subject_title,
+            'on_time' => $request->on_time,
+        ]);
+        return redirect()->route('subjects');
     }
 
     /**
@@ -54,7 +80,7 @@ class SubjectsController extends Controller
      * @param  \App\Models\Subjects  $subjects
      * @return \Illuminate\Http\Response
      */
-    public function show(Subjects $subjects)
+    public function show($id)
     {
         //
     }
@@ -77,7 +103,7 @@ class SubjectsController extends Controller
      * @param  \App\Models\Subjects  $subjects
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subjects $subjects)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -88,7 +114,7 @@ class SubjectsController extends Controller
      * @param  \App\Models\Subjects  $subjects
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subjects $subjects)
+    public function destroy($id)
     {
         //
     }

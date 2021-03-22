@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
             ['first_name' => 'ณัฐพจน์', 'last_name' => 'จันทร์รอด', 'username' => '','usercode'=> '1160102060457', 'email' => '','password' => ''],
         ];
 
-        $pwd = "1q2w3e4r5t6y";
+        $pwd = env("ADMIN_PASSWD", "1q2w3e4r5t6y");
         $i = 1;
 
         User::create(['first_name' => 'Administrator', 'last_name' => '', 'username' => 'administrator','usercode'=> '000000000001', 'email' => 'admin@localhost.com','password' => Hash::make($pwd), 'is_admin' => true]);

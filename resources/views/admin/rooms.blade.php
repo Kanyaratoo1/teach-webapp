@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    {{ __('Dashboard') }}
+                    {{ __('ห้องเรียน') }}
                     <div class="float-right">
                         <a href="/rooms/add" type="button" class="btn btn-sm btn-primary">
                             เพิ่มรายการใหม่

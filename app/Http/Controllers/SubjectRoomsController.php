@@ -6,6 +6,7 @@ use App\Models\ClassRooms;
 use App\Models\SubjectRooms;
 use App\Models\Subjects;
 use App\Models\Teachers;
+use App\Models\OnClassRooms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -70,8 +71,7 @@ class SubjectRoomsController extends Controller
             'room_time' => 'required',
         ]);
 
-        if ($v->fails())
-        {
+        if ($v->fails()) {
             return redirect()->to('subroom/add')->withErrors($v);
         }
 
@@ -92,9 +92,19 @@ class SubjectRoomsController extends Controller
      * @param  \App\Models\SubjectRooms  $subjectRooms
      * @return \Illuminate\Http\Response
      */
-    public function show(SubjectRooms $subjectRooms)
+    public function show($id)
     {
-        //
+        $obj = OnClassRooms::with(
+            'student_id',
+            'room_id',
+            'room_id.subject_id',
+            'room_id.teach_id.user_id'
+            )->where(['room_id' => $id])->get();
+
+        $data = [
+            'rooms' => $obj
+        ];
+        return view('room_detail', $data);
     }
 
     /**

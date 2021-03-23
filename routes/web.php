@@ -36,6 +36,7 @@ Route::post('/student/{id}', [App\Http\Controllers\StudentController::class, 'up
 
 Route::get('/teachers', [\App\Http\Controllers\TeachersController::class, 'index'])->name('teachers');
 Route::get('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'create'])->name('create teachers');
+Route::get('/teachers/{id}', [\App\Http\Controllers\TeachersController::class, 'destroy'])->name('delete teachers');
 Route::post('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'store'])->name('post teachers');
 
 Route::get('/subjects', [\App\Http\Controllers\SubjectsController::class, 'index'])->name('subjects');

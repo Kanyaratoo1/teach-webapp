@@ -75,7 +75,7 @@ class TeachersController extends Controller
      * @param  \App\Models\Teachers  $teachers
      * @return \Illuminate\Http\Response
      */
-    public function show(Teachers $teachers)
+    public function show($id)
     {
         //
     }
@@ -109,8 +109,8 @@ class TeachersController extends Controller
      * @param  \App\Models\Teachers  $teachers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teachers $teachers)
+    public function destroy($id)
     {
-        //
+        return redirect()->route('teachers');
     }
 }

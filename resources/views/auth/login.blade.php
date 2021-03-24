@@ -6,7 +6,7 @@
             <div class="user_card">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{{asset('storage/avatar.png')}}"
+                        <img src="https://e7.pngegg.com/pngimages/674/524/png-clipart-professional-computer-icons-avatar-job-avatar-heroes-computer.png"
                             class="brand_logo" alt="Logo">
                     </div>
                 </div>

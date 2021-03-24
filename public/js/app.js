@@ -1929,7 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_qrcode__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-qrcode */ "./node_modules/vue-qrcode/lib/index.js");
 //
 //
 //
@@ -1985,12 +1984,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+// import VueQrcode from "vue-qrcode";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["objects"],
-  components: {
-    VueQrcode: vue_qrcode__WEBPACK_IMPORTED_MODULE_0__.default
-  },
+  //   components: {
+  //     VueQrcode,
+  //   },
   mounted: function mounted() {
     console.dir(this.objects);
   }
@@ -2009,6 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_qrcode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-qrcode */ "./node_modules/vue-qrcode/lib/index.js");
 /* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! xlsx */ "./node_modules/xlsx/xlsx.js");
 /* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_0__);
 //
@@ -2073,10 +2073,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RoomDetail",
   props: ["rooms"],
+  components: [vue_qrcode__WEBPACK_IMPORTED_MODULE_1__.default],
   methods: {
     restatus: function restatus(i) {
       if (i) {
@@ -2098,12 +2109,12 @@ __webpack_require__.r(__webpack_exports__);
       var doc = [];
       this.rooms.map(function (i) {
         doc.push({
-          "ลำดับ": doc.length + 1,
-          "รหัส": i.student_id.usercode,
+          ลำดับ: doc.length + 1,
+          รหัส: i.student_id.usercode,
           "ชื่อ-นักศึกษา": i.student_id.first_name + " " + i.student_id.last_name,
-          "วันที่": i.at_date,
-          "เวลา": i.at_time,
-          "สถานะ": _this.restatus(i.is_absent)
+          วันที่: i.at_date,
+          เวลา: i.at_time,
+          สถานะ: _this.restatus(i.is_absent)
         });
       });
       console.dir(doc);
@@ -44777,28 +44788,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "div",
-        { staticClass: "d-flex justify-content-center" },
-        [
-          _c("vue-qrcode", {
-            staticClass: "rounded",
-            attrs: {
-              value:
-                "http://203.151.171.156/member/" +
-                _vm.objects[0].username +
-                "/" +
-                _vm.objects[0].id +
-                "/register",
-              alt: "Cinque Terre",
-              width: "120",
-              height: "120"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
       _vm._l(_vm.objects, function(i) {
         return _c("div", { key: i.id, staticClass: "form-group" }, [
           _c("div", { staticClass: "row" }, [
@@ -44935,6 +44924,23 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
+      _c(
+        "div",
+        { staticClass: "row d-flex justify-content-center" },
+        [
+          _c("vue-qrcode", {
+            staticClass: "rounded",
+            attrs: {
+              value: "http://203.151.171.156/member/",
+              alt: "Cinque Terre",
+              width: "120",
+              height: "120"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("table", { staticClass: "table table-striped table-borderless" }, [
         _vm._m(1),
         _vm._v(" "),

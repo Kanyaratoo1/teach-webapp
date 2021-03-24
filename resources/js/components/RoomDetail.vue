@@ -16,6 +16,15 @@
       </div>
     </div>
     <div class="card-body">
+      <div class="row d-flex justify-content-center">
+        <vue-qrcode
+          :value="'http://203.151.171.156/member/'"
+          class="rounded"
+          alt="Cinque Terre"
+          width="120"
+          height="120"
+        />
+      </div>
       <table class="table table-striped table-borderless">
         <thead>
           <tr>
@@ -61,10 +70,12 @@
   </div>
 </template>
 <script>
+import VueQrcode from "vue-qrcode";
 import XLSX from "xlsx";
 export default {
   name: "RoomDetail",
   props: ["rooms"],
+  components: [VueQrcode],
   methods: {
     restatus(i) {
       if (i) {
@@ -82,13 +93,13 @@ export default {
       let doc = [];
       this.rooms.map((i) => {
         doc.push({
-          "ลำดับ": doc.length + 1,
-          "รหัส": i.student_id.usercode,
+          ลำดับ: doc.length + 1,
+          รหัส: i.student_id.usercode,
           "ชื่อ-นักศึกษา":
             i.student_id.first_name + " " + i.student_id.last_name,
-          "วันที่": i.at_date,
-          "เวลา": i.at_time,
-          "สถานะ": this.restatus(i.is_absent),
+          วันที่: i.at_date,
+          เวลา: i.at_time,
+          สถานะ: this.restatus(i.is_absent),
         });
       });
       console.dir(doc);

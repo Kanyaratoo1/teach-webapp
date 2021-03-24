@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center">
+    <!-- <div class="d-flex justify-content-center">
       <vue-qrcode
         :value="'http://203.151.171.156/member/'+objects[0].username+'/'+objects[0].id + '/register'"
         class="rounded"
@@ -8,7 +8,7 @@
         width="120"
         height="120"
       />
-    </div>
+    </div> -->
     <div class="form-group" v-for="i in objects" :key="i.id">
       <div class="row">
         <div class="col-md-6">
@@ -54,13 +54,13 @@
   </div>
 </template>
 <script>
-import VueQrcode from "vue-qrcode";
+// import VueQrcode from "vue-qrcode";
 
 export default {
   props: ["objects"],
-  components: {
-    VueQrcode,
-  },
+//   components: {
+//     VueQrcode,
+//   },
   mounted(){
       console.dir(this.objects)
   }

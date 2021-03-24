@@ -79,8 +79,20 @@ export default {
       return "";
     },
     export_excel() {
-      console.dir(this.rooms);
-      const dataWS = XLSX.utils.json_to_sheet(this.rooms);
+      let doc = [];
+      this.rooms.map((i) => {
+        doc.push({
+          "ลำดับ": doc.length + 1,
+          "รหัส": i.student_id.usercode,
+          "ชื่อ-นักศึกษา":
+            i.student_id.first_name + " " + i.student_id.last_name,
+          "วันที่": i.at_date,
+          "เวลา": i.at_time,
+          "สถานะ": this.restatus(i.is_absent),
+        });
+      });
+      console.dir(doc);
+      const dataWS = XLSX.utils.json_to_sheet(doc);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, dataWS);
       XLSX.writeFile(wb, "export.xlsx");

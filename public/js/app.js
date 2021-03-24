@@ -2090,8 +2090,21 @@ __webpack_require__.r(__webpack_exports__);
       return "";
     },
     export_excel: function export_excel() {
-      console.dir(this.rooms);
-      var dataWS = xlsx__WEBPACK_IMPORTED_MODULE_0___default().utils.json_to_sheet(this.rooms);
+      var _this = this;
+
+      var doc = [];
+      this.rooms.map(function (i) {
+        doc.push({
+          "ลำดับ": doc.length + 1,
+          "รหัส": i.student_id.usercode,
+          "ชื่อ-นักศึกษา": i.student_id.first_name + " " + i.student_id.last_name,
+          "วันที่": i.at_date,
+          "เวลา": i.at_time,
+          "สถานะ": _this.restatus(i.is_absent)
+        });
+      });
+      console.dir(doc);
+      var dataWS = xlsx__WEBPACK_IMPORTED_MODULE_0___default().utils.json_to_sheet(doc);
       var wb = xlsx__WEBPACK_IMPORTED_MODULE_0___default().utils.book_new();
       xlsx__WEBPACK_IMPORTED_MODULE_0___default().utils.book_append_sheet(wb, dataWS);
       xlsx__WEBPACK_IMPORTED_MODULE_0___default().writeFile(wb, "export.xlsx");

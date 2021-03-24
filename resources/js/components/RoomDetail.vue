@@ -16,7 +16,6 @@
       </div>
     </div>
     <div class="card-body">
-        {{room_id}}
       <div class="row d-flex justify-content-center">
         <vue-qrcode
           :value="'http://203.151.171.156/member/'+room_id"

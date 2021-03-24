@@ -2082,7 +2082,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -44927,7 +44926,6 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _vm._v("\n      " + _vm._s(_vm.room_id) + "\n    "),
       _c(
         "div",
         { staticClass: "row d-flex justify-content-center" },

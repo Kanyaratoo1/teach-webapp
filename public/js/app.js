@@ -44733,7 +44733,10 @@ var render = function() {
           _c("vue-qrcode", {
             staticClass: "rounded",
             attrs: {
-              value: "/sublist/" + _vm.objects[0].id + "/register",
+              value:
+                "http://203.151.171.156/api/v1/subjects/" +
+                _vm.objects[0].id +
+                "/register",
               alt: "Cinque Terre",
               width: "120",
               height: "120"

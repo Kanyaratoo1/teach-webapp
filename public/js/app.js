@@ -1990,6 +1990,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ["objects"],
   components: {
     VueQrcode: vue_qrcode__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  mounted: function mounted() {
+    console.dir(this.objects);
   }
 });
 
@@ -44782,7 +44785,9 @@ var render = function() {
             staticClass: "rounded",
             attrs: {
               value:
-                "http://203.151.171.156/api/v1/subjects/" +
+                "http://203.151.171.156/member/" +
+                _vm.objects[0].username +
+                "/" +
                 _vm.objects[0].id +
                 "/register",
               alt: "Cinque Terre",

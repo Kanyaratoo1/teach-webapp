@@ -39,9 +39,11 @@ class OnClassRoomsController extends Controller
 
     public function register_subjects($id)
     {
+        $u = SubjectRooms::with('subject_id', 'teach_id', 'teach_id.user_id', 'room_id')->where(['id' => $id])->get();
+        $u[0]["username"] = Auth::user()->username;
         $data = [
             'link' => url()->current(),
-            'objects' => SubjectRooms::with('subject_id', 'teach_id', 'teach_id.user_id', 'room_id')->where(['id' => $id])->get(),
+            'objects' => $u,
         ];
 
         return view('register', $data);

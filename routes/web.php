@@ -72,3 +72,4 @@ Route::get('/onroom',[\App\Http\Controllers\OnClassRoomsController::class, 'subr
 #Get Member
 Route::get('/member/{username}/{passwd}/login', [\App\Http\Controllers\GetStudentController::class, 'LogIn'])->name('get_member');
 Route::get('/member/{username}/room', [\App\Http\Controllers\GetStudentController::class, 'GetCheckIn'])->name('check_room');
+Route::get('/member/{username}/{id}/register', [\App\Http\Controllers\GetStudentController::class, 'CheckInRoom'])->name('check_in_room');

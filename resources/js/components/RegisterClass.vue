@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-center">
       <vue-qrcode
-        :value="'http://203.151.171.156/api/v1/subjects/' + objects[0].id + '/register'"
+        :value="'http://203.151.171.156/member/'+objects[0].username+'/'+objects[0].id + '/register'"
         class="rounded"
         alt="Cinque Terre"
         width="120"
@@ -61,5 +61,8 @@ export default {
   components: {
     VueQrcode,
   },
+  mounted(){
+      console.dir(this.objects)
+  }
 };
 </script>

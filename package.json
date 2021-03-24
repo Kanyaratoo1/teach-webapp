@@ -28,6 +28,7 @@
         "@fortawesome/fontawesome-free": "^5.15.3",
         "bootswatch": "^4.6.0",
         "qrcode": "^1.4.4",
-        "vue-qrcode": "^0.3.5"
+        "vue-qrcode": "^0.3.5",
+        "xlsx": "^0.16.9"
     }
 }

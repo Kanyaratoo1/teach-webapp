@@ -1,61 +1,90 @@
 <template>
-  <table class="table table-striped table-borderless">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>รหัส</th>
-        <th>ชื่อ-นักศึกษา</th>
-        <th>วันที่</th>
-        <th>เวลา</th>
-        <th>สถานะ</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(i, x) in rooms" :key="i.id" :class="re_table_class(i.is_absent)">
-        <td>{{x+1}}</td>
-        <td>{{i.student_id.usercode}}</td>
-        <td>{{i.student_id.first_name +' '+i.student_id.last_name}}</td>
-        <td>{{i.at_date}}</td>
-        <td>{{i.at_time}}</td>
-        <td>{{restatus(i.is_absent)}}</td>
-        <td></td>
-      </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>{{rooms.length}}</th>
+  <div class="card">
+    <div class="card-header">
+      ข้อมูลเพิ่มเติม
+      <div class="float-right">
+        <button
+          type="button"
+          class="btn btn-sm btn-success"
+          @click="export_excel()"
+        >
+          <i class="fas fa-file-excel"></i>
+        </button>
+        <a href="/subroom" type="button" class="btn btn-sm btn-primary">
+          <i class="fas fa-home"></i>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped table-borderless">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>รหัส</th>
+            <th>ชื่อ-นักศึกษา</th>
+            <th>วันที่</th>
+            <th>เวลา</th>
+            <th>สถานะ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(i, x) in rooms"
+            :key="i.id"
+            :class="re_table_class(i.is_absent)"
+          >
+            <td>{{ x + 1 }}</td>
+            <td>{{ i.student_id.usercode }}</td>
+            <td>
+              {{ i.student_id.first_name + " " + i.student_id.last_name }}
+            </td>
+            <td>{{ i.at_date }}</td>
+            <td>{{ i.at_time }}</td>
+            <td>{{ restatus(i.is_absent) }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>{{ rooms.length }}</th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
-        </tr>
-    </tfoot>
-  </table>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
 </template>
 <script>
+import XLSX from "xlsx";
 export default {
-    name: 'RoomDetail',
-    props: ['rooms'],
-    methods: {
-        restatus(i)
-        {
-            if (i)
-            {
-                return 'สาย'
-            }
-            return ''
-        },
-        re_table_class(i)
-        {
-            if (i)
-            {
-                return 'table-danger'
-            }
-            return ''
-        }
-    }
-}
+  name: "RoomDetail",
+  props: ["rooms"],
+  methods: {
+    restatus(i) {
+      if (i) {
+        return "สาย";
+      }
+      return "";
+    },
+    re_table_class(i) {
+      if (i) {
+        return "table-danger";
+      }
+      return "";
+    },
+    export_excel() {
+      console.dir(this.rooms);
+      const dataWS = XLSX.utils.json_to_sheet(this.rooms);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, dataWS);
+      XLSX.writeFile(wb, "export.xlsx");
+    },
+  },
+};
 </script>

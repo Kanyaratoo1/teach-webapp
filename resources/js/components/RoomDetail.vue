@@ -16,9 +16,10 @@
       </div>
     </div>
     <div class="card-body">
+        {{room_id}}
       <div class="row d-flex justify-content-center">
         <vue-qrcode
-          :value="'http://203.151.171.156/member/'"
+          :value="'http://203.151.171.156/member/'+room_id"
           class="rounded"
           alt="Cinque Terre"
           width="320"
@@ -74,7 +75,7 @@ import VueQrcode from "vue-qrcode";
 import XLSX from "xlsx";
 export default {
   name: "RoomDetail",
-  props: ["rooms"],
+  props: ["rooms", "room_id"],
   components: { VueQrcode },
   methods: {
     restatus(i) {

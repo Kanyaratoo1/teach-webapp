@@ -2082,11 +2082,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RoomDetail",
-  props: ["rooms"],
+  props: ["rooms", "room_id"],
   components: {
     VueQrcode: vue_qrcode__WEBPACK_IMPORTED_MODULE_1__.default
   },
@@ -44926,6 +44927,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
+      _vm._v("\n      " + _vm._s(_vm.room_id) + "\n    "),
       _c(
         "div",
         { staticClass: "row d-flex justify-content-center" },
@@ -44933,7 +44935,7 @@ var render = function() {
           _c("vue-qrcode", {
             staticClass: "rounded",
             attrs: {
-              value: "http://203.151.171.156/member/",
+              value: "http://203.151.171.156/member/" + _vm.room_id,
               alt: "Cinque Terre",
               width: "320",
               height: "320"

@@ -28,7 +28,7 @@ class GetStudentController extends Controller
         return $obj;
     }
 
-    public function CheckInRoom($username, $id)
+    public function CheckInRoom($id, $username)
     {
         $user_id = User::where(['username' => $username])->get()[0]->id;
         $s = \App\Models\SubjectRooms::where(['id' => $id])->get()[0];

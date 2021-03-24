@@ -102,6 +102,7 @@ class SubjectRoomsController extends Controller
             )->where(['room_id' => $id])->get();
 
         $data = [
+            'room_id' => $id,
             'rooms' => $obj
         ];
         return view('room_detail', $data);

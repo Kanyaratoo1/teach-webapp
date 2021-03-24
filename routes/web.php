@@ -67,3 +67,8 @@ Route::get('/sublist/{id}/register',[\App\Http\Controllers\OnClassRoomsControlle
 Route::post('/sublist/{id}/register',[\App\Http\Controllers\OnClassRoomsController::class, 'register_to_classroom'])->name('register_to_classroom');
 Route::get('/checkrooms',[\App\Http\Controllers\OnClassRoomsController::class, 'checkrooms'])->name('checkrooms');
 Route::get('/onroom',[\App\Http\Controllers\OnClassRoomsController::class, 'subroom'])->name('onroom');
+
+
+#Get Member
+Route::get('/member/{username}/{passwd}/login', [\App\Http\Controllers\GetStudentController::class, 'LogIn'])->name('get_member');
+Route::get('/member/{username}/room', [\App\Http\Controllers\GetStudentController::class, 'GetCheckIn'])->name('check_room');

@@ -21,8 +21,8 @@
           :value="'http://203.151.171.156/member/'"
           class="rounded"
           alt="Cinque Terre"
-          width="120"
-          height="120"
+          width="320"
+          height="320"
         />
       </div>
       <table class="table table-striped table-borderless">
@@ -75,7 +75,7 @@ import XLSX from "xlsx";
 export default {
   name: "RoomDetail",
   props: ["rooms"],
-  components: [VueQrcode],
+  components: { VueQrcode },
   methods: {
     restatus(i) {
       if (i) {

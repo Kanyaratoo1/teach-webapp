@@ -2087,7 +2087,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RoomDetail",
   props: ["rooms"],
-  components: [vue_qrcode__WEBPACK_IMPORTED_MODULE_1__.default],
+  components: {
+    VueQrcode: vue_qrcode__WEBPACK_IMPORTED_MODULE_1__.default
+  },
   methods: {
     restatus: function restatus(i) {
       if (i) {
@@ -44933,8 +44935,8 @@ var render = function() {
             attrs: {
               value: "http://203.151.171.156/member/",
               alt: "Cinque Terre",
-              width: "120",
-              height: "120"
+              width: "320",
+              height: "320"
             }
           })
         ],

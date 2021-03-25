@@ -76,6 +76,9 @@ export default {
   name: "RoomDetail",
   props: ["rooms", "room_id"],
   components: { VueQrcode },
+  mounted(){
+      console.dir(this.rooms);
+  },
   methods: {
     restatus(i) {
       if (i) {

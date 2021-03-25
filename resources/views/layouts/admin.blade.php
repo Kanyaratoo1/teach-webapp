@@ -41,7 +41,7 @@
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ข้อมูลผู้ใช้งาน</a>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="{{url('/student')}}">รายชื่อนักศึกษา</a>
-                              <a class="dropdown-item" href="{{url('/teachers')}}">รายชื่ออาจาร์ย</a>
+                              <a class="dropdown-item" href="{{url('/teachers')}}">รายชื่ออาจารย์</a>
                             </div>
                         </li>
                         @endif

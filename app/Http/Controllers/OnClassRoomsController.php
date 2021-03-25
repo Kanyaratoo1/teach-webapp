@@ -56,10 +56,24 @@ class OnClassRoomsController extends Controller
         $check_date = Carbon::createFromFormat('Y-m-d H:i:s', $str_date);
         $current_date = Carbon::now('Asia/Bangkok')->toDateTimeString();
         $time_register = Carbon::createFromFormat('Y-m-d H:i:s', $current_date);
+
+        $weekMap = [
+            0 => 'SUN',
+            1 => 'MON',
+            2 => 'TUE',
+            3 => 'WED',
+            4 => 'THU',
+            5 => 'FRI',
+            6 => 'SAT',
+        ];
+        $dayOfTheWeek = Carbon::now()->dayOfWeek;
+        $weekday = $weekMap[$dayOfTheWeek];
+
         $num = OnClassRooms::where(['student_id' => Auth::user()->id])->count() + 1;
         $data = [
             'student_id' => Auth::user()->id,
             'room_id' => $id,
+            'on_day' => $weekday,
             'at_date' => $time_register,
             'at_time' => $time_register,
             'rounds' => $num,

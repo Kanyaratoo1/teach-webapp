@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subjects;
 use App\Models\Teachers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class SubjectsController extends Controller
@@ -68,7 +69,14 @@ class SubjectsController extends Controller
             'subject_id' => $request->subject_id,
             'teach_id' => $request->teach_id,
             'subject_title' => $request->subject_title,
-            'on_date'=>$request->on_date,
+            'sun_day' => $request->sun_day,
+            'mon_day' => $request->mon_day,
+            'tue_day' => $request->tue_day,
+            'wed_day' => $request->wed_day,
+            'thu_day' => $request->thu_day,
+            'fri_day' => $request->fri_day,
+            'sat_day' => $request->sat_day,
+            'on_date'=> Carbon::now($tz=null),
             'on_time'=>$request->on_time,
         ]);
         return redirect()->route('subjects');

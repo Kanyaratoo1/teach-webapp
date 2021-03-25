@@ -31,6 +31,11 @@ Vue.component('register-class', require('./components/RegisterClass.vue').defaul
 Vue.component('room-detail', require('./components/RoomDetail.vue').default);
 
 
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
+UIkit.use(Icons);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

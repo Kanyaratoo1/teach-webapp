@@ -8,6 +8,7 @@ use App\Models\Subjects;
 use App\Models\Teachers;
 use App\Models\OnClassRooms;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class SubjectRoomsController extends Controller
@@ -67,7 +68,6 @@ class SubjectRoomsController extends Controller
             'subject_id' => 'required',
             'teach_id' => 'required',
             'room_id' => 'required',
-            'room_date' => 'required',
             'room_time' => 'required',
         ]);
 
@@ -79,7 +79,14 @@ class SubjectRoomsController extends Controller
             'subject_id' => $request->subject_id,
             'teach_id' => $request->teach_id,
             'room_id' => $request->room_id,
-            'room_date' => $request->room_date,
+            'sun_day' => $request->sun_day,
+            'mon_day' => $request->mon_day,
+            'tue_day' => $request->tue_day,
+            'wed_day' => $request->wed_day,
+            'thu_day' => $request->thu_day,
+            'fri_day' => $request->fri_day,
+            'sat_day' => $request->sat_day,
+            'room_date' => Carbon::now(),
             'room_time' => $request->room_time,
         ]);
 

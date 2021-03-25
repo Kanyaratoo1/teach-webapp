@@ -11,6 +11,7 @@ class OnClassRooms extends Model
     protected $fillable = [
         'student_id',
         'room_id',
+        'on_day',
         'at_date',
         'at_time',
         'rounds',

@@ -37,9 +37,23 @@ class GetStudentController extends Controller
         $current_date = Carbon::now('Asia/Bangkok')->toDateTimeString();
         $time_register = Carbon::createFromFormat('Y-m-d H:i:s', $current_date);
         $num = \App\Models\OnClassRooms::where(['student_id' => $user_id])->count() + 1;
+
+        $weekMap = [
+            0 => 'SUN',
+            1 => 'MON',
+            2 => 'TUE',
+            3 => 'WED',
+            4 => 'THU',
+            5 => 'FRI',
+            6 => 'SAT',
+        ];
+        $dayOfTheWeek = Carbon::now()->dayOfWeek;
+        $weekday = $weekMap[$dayOfTheWeek];
+
         $data = [
             'student_id' => $user_id,
             'room_id' => $id,
+            'on_day' => $weekday,
             'at_date' => $time_register,
             'at_time' => $time_register,
             'rounds' => $num,

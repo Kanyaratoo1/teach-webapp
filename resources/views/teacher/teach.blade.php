@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('สวัสดีอาจาร์ย ') . Auth::user()->first_name }}
+                    {{ __('สวัสดีอาจารย์ ') . Auth::user()->first_name }}
                 </div>
             </div>
         </div>

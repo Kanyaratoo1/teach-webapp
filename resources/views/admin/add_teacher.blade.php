@@ -8,7 +8,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-header">
-                        {{ __('เพิ่มรายชื่ออาจาร์ย') }}
+                        {{ __('เพิ่มรายชื่ออาจารย์') }}
                         <div class="float-right">
                             <button type="submit" class="btn btn-sm btn-primary">
                                 {{ __('ลงทะเบียน') }}
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label>{{ __('ตำแหนง:') }}</label>
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="อาจาร์ย" autocomplete="description"/>
+                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="อาจารย์" autocomplete="description"/>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

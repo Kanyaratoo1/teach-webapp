@@ -33,7 +33,7 @@ class GetStudentController extends Controller
         $user_id = User::where(['username' => $username]);
         if ($user_id->count() <= 0)
         {
-            return false;
+            return "0";
         }
         $uid = $user_id->get()[0]->id;
         $s = \App\Models\SubjectRooms::where(['id' => $id])->get()[0];

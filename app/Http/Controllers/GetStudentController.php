@@ -75,7 +75,7 @@ class GetStudentController extends Controller
         )->where(['room_id' => $id])->get();
 
         $data['rooms'] = $obj;
-        return true;
+        return "1";
     }
 
     public function GetTeach()

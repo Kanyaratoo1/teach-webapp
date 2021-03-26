@@ -30,13 +30,18 @@ class GetStudentController extends Controller
 
     public function CheckInRoom($id, $username)
     {
-        $user_id = User::where(['username' => $username])->get()[0]->id;
+        $user_id = User::where(['username' => $username]);
+        if ($user_id->count() <= 0)
+        {
+            return false;
+        }
+        $uid = $user_id->get()[0]->id;
         $s = \App\Models\SubjectRooms::where(['id' => $id])->get()[0];
         $str_date = $s->room_date . ' ' . $s->room_time;
         $check_date = Carbon::createFromFormat('Y-m-d H:i:s', $str_date);
         $current_date = Carbon::now('Asia/Bangkok')->toDateTimeString();
         $time_register = Carbon::createFromFormat('Y-m-d H:i:s', $current_date);
-        $num = \App\Models\OnClassRooms::where(['student_id' => $user_id])->count() + 1;
+        $num = \App\Models\OnClassRooms::where(['student_id' => $uid])->count() + 1;
 
         $weekMap = [
             0 => 'SUN',
@@ -51,7 +56,7 @@ class GetStudentController extends Controller
         $weekday = $weekMap[$dayOfTheWeek];
 
         $data = [
-            'student_id' => $user_id,
+            'student_id' => $uid,
             'room_id' => $id,
             'on_day' => $weekday,
             'at_date' => $time_register,
@@ -70,6 +75,11 @@ class GetStudentController extends Controller
         )->where(['room_id' => $id])->get();
 
         $data['rooms'] = $obj;
-        return $data;
+        return true;
+    }
+
+    public function GetTeach()
+    {
+        return [];
     }
 }

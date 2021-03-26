@@ -73,3 +73,4 @@ Route::get('/onroom',[\App\Http\Controllers\OnClassRoomsController::class, 'subr
 Route::get('/member/{username}/{passwd}/login', [\App\Http\Controllers\GetStudentController::class, 'LogIn'])->name('get_member');
 Route::get('/member/{username}/room', [\App\Http\Controllers\GetStudentController::class, 'GetCheckIn'])->name('check_room');
 Route::get('/member/{id}/{username}', [\App\Http\Controllers\GetStudentController::class, 'CheckInRoom'])->name('check_in_room');
+Route::get('/member/teach', [\App\Http\Controllers\GetStudentController::class, 'GetTeach'])->name('get_teach_room');

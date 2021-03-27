@@ -90,7 +90,12 @@ class SubjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $s = Subjects::with('teach_id','teach_id.user_id')->where(['id' => $id])->get();
+        $data = [
+            'subjects' => $s[0],
+            'teachers' => Teachers::with('user_id')->get(),
+        ];
+        return view('admin.edit_subject', $data);
     }
 
     /**
@@ -113,7 +118,22 @@ class SubjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            "subject_id" => $request->subject_id,
+            "subject_title" => $request->subject_title,
+            "teach_id" => $request->teach_id,
+            "sun_day" => $request->sun_day,
+            "mon_day" => $request->mon_day,
+            "tue_day" => $request->tue_day,
+            "wed_day" => $request->wed_day,
+            "thu_day" => $request->thu_day,
+            "fri_day" => $request->fri_day,
+            "sat_day" => $request->sat_day,
+            "on_time" => $request->on_time,
+        ];
+
+        Subjects::where(['id' => $id])->update($data);
+        return redirect()->to('/subjects')->withErrors(['success' => 'บันทึกข้อมูลเสร็จแล้ว']);
     }
 
     /**

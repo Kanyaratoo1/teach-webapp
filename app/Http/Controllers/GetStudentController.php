@@ -78,8 +78,20 @@ class GetStudentController extends Controller
         return "1";
     }
 
-    public function GetTeach()
+    public function GetTeach($username)
     {
-        return [];
+        $obj = [];
+        $user = User::where(['username'=> $username]);
+        if ($user->count() > 0)
+        {
+            $id = $user->get()[0]->id;
+            $obj = \App\Models\OnClassRooms::with(
+                'student_id',
+                'room_id',
+                'room_id.subject_id',
+                'room_id.teach_id.user_id'
+            )->where(['student_id' => $id])->get();
+        }
+        return $obj;
     }
 }

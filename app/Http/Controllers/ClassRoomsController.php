@@ -77,7 +77,10 @@ class ClassRoomsController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'rooms' => ClassRooms::where(['id' => $id])->get()[0],
+        ];
+        return view('admin.edit_room', $data);
     }
 
     /**
@@ -98,9 +101,15 @@ class ClassRoomsController extends Controller
      * @param  \App\Models\ClassRooms  $classRooms
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClassRooms $classRooms)
+    public function update(Request $request, $id)
     {
-        //
+        ClassRooms::where(['id' => $id])->update([
+            'room_title' => $request->room_title,
+            'room_code' => $request->room_code,
+            'room_limits' => $request->room_limits,
+        ]);
+
+        return redirect()->route('rooms');
     }
 
     /**
@@ -109,8 +118,9 @@ class ClassRoomsController extends Controller
      * @param  \App\Models\ClassRooms  $classRooms
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClassRooms $classRooms)
+    public function destroy($id)
     {
-        //
+        ClassRooms::destroy($id);
+        return redirect()->route('rooms');
     }
 }

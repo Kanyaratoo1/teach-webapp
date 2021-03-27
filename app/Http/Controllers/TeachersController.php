@@ -77,18 +77,12 @@ class TeachersController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Teachers  $teachers
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Teachers $teachers)
-    {
-        //
+        $t = Teachers::where(['id' => $id])->get()[0];
+        $data = [
+            'teachers' => $t,
+            'username' => User::where(['id' => $t->user_id])->get()[0],
+        ];
+        return view('admin.edit_teacher', $data);
     }
 
     /**
@@ -98,9 +92,18 @@ class TeachersController extends Controller
      * @param  \App\Models\Teachers  $teachers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teachers $teachers)
+    public function update(Request $request, $user_id, $teacher_id)
     {
-        //
+        Teachers::where(['id' => $teacher_id])->update([
+            'description' => $request->description,
+        ]);
+
+        User::where(['id' => $user_id])->update([
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
+            "usercode" => $request->usercode,
+        ]);
+        return redirect()->route('teachers');
     }
 
     /**
@@ -111,6 +114,7 @@ class TeachersController extends Controller
      */
     public function destroy($id)
     {
+        Teachers::destroy($id);
         return redirect()->route('teachers');
     }
 }

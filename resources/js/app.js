@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('teacher-component', require('./components/TeacherComponent.vue').default);
 Vue.component('teacher-selector-component', require('./components/TeacherSelect.vue').default);
+Vue.component('teacher-edit-component', require('./components/TeacherEditor.vue').default);
 Vue.component('subjects-list', require('./components/SubjectList.vue').default);
 Vue.component('sub-room', require('./components/SubRoom.vue').default);
 Vue.component('sub-room-list', require('./components/SubRoomList.vue').default);

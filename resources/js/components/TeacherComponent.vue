@@ -17,8 +17,8 @@
           <td>{{ i.user_id.first_name}} {{ i.user_id.last_name}}</td>
           <td>{{ i.description }}</td>
           <td>
-              <a :href="'/teachers/'+i.id" type="button" class="btn btn-sm btn-danger">
-                  <i class="fas fa-trash"></i>
+              <a :href="'/teachers/'+i.id+'/show'" type="button" class="btn btn-sm btn-danger">
+                  <i class="far fa-edit"></i>
               </a>
           </td>
         </tr>

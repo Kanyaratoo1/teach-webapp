@@ -36,8 +36,10 @@ Route::post('/student/{id}', [App\Http\Controllers\StudentController::class, 'up
 
 Route::get('/teachers', [\App\Http\Controllers\TeachersController::class, 'index'])->name('teachers');
 Route::get('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'create'])->name('create teachers');
-Route::get('/teachers/{id}', [\App\Http\Controllers\TeachersController::class, 'destroy'])->name('delete teachers');
+Route::get('/teachers/{id}/show', [\App\Http\Controllers\TeachersController::class, 'show'])->name('show teachers');
+Route::get('/teachers/{id}/delete', [\App\Http\Controllers\TeachersController::class, 'destroy'])->name('delete teachers');
 Route::post('/teachers/add', [\App\Http\Controllers\TeachersController::class, 'store'])->name('post teachers');
+Route::post('/teachers/{user_id}/{teacher_id}/edit', [\App\Http\Controllers\TeachersController::class, 'update'])->name('edit teachers');
 
 Route::get('/subjects', [\App\Http\Controllers\SubjectsController::class, 'index'])->name('subjects');
 Route::get('/subjects/add', [\App\Http\Controllers\SubjectsController::class, 'create'])->name('create subjects');
@@ -49,7 +51,8 @@ Route::get('/rooms', [\App\Http\Controllers\ClassRoomsController::class, 'index'
 Route::get('/rooms/add', [\App\Http\Controllers\ClassRoomsController::class, 'create'])->name('create room');
 Route::post('/rooms/add', [\App\Http\Controllers\ClassRoomsController::class, 'store'])->name('post room');
 Route::get('/rooms/{id}', [\App\Http\Controllers\ClassRoomsController::class, 'show'])->name('show room');
-Route::post('/rooms/{id}', [\App\Http\Controllers\ClassRoomsController::class, 'show'])->name('update room');
+Route::post('/rooms/{id}', [\App\Http\Controllers\ClassRoomsController::class, 'update'])->name('update room');
+Route::get('/rooms/{id}/delete', [\App\Http\Controllers\ClassRoomsController::class, 'destroy'])->name('delete room');
 
 Route::get('/subroom', [\App\Http\Controllers\SubjectRoomsController::class, 'index'])->name('subroom');
 Route::get('/subroom/add', [\App\Http\Controllers\SubjectRoomsController::class, 'create'])->name('create subroom');
@@ -73,4 +76,4 @@ Route::get('/onroom',[\App\Http\Controllers\OnClassRoomsController::class, 'subr
 Route::get('/member/{username}/{passwd}/login', [\App\Http\Controllers\GetStudentController::class, 'LogIn'])->name('get_member');
 Route::get('/member/{username}/room', [\App\Http\Controllers\GetStudentController::class, 'GetCheckIn'])->name('check_room');
 Route::get('/member/{id}/{username}', [\App\Http\Controllers\GetStudentController::class, 'CheckInRoom'])->name('check_in_room');
-Route::get('/member/teach', [\App\Http\Controllers\GetStudentController::class, 'GetTeach'])->name('get_teach_room');
+Route::get('/member/{username}', [\App\Http\Controllers\GetStudentController::class, 'GetTeach'])->name('get_teach_room');

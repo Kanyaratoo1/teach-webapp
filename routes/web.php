@@ -59,6 +59,7 @@ Route::get('/subroom/add', [\App\Http\Controllers\SubjectRoomsController::class,
 Route::post('/subroom/add', [\App\Http\Controllers\SubjectRoomsController::class, 'store'])->name('post subroom');
 Route::get('/subroom/{id}', [\App\Http\Controllers\SubjectRoomsController::class, 'show'])->name('show subroom');
 Route::post('/subroom/{id}', [\App\Http\Controllers\SubjectRoomsController::class, 'update'])->name('update subroom');
+Route::get('/subroom/{id}/delete', [\App\Http\Controllers\SubjectRoomsController::class, 'destroy'])->name('delete subroom');
 
 //---------------------------->
 

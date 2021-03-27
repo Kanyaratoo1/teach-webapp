@@ -144,8 +144,9 @@ class SubjectRoomsController extends Controller
      * @param  \App\Models\SubjectRooms  $subjectRooms
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubjectRooms $subjectRooms)
+    public function destroy($id)
     {
-        //
+        OnClassRooms::destroy($id);
+        return redirect()->route('subroom');
     }
 }

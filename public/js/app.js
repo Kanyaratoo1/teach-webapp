@@ -2082,6 +2082,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -58011,7 +58019,19 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(_vm.restatus(i.is_absent)))]),
                 _vm._v(" "),
-                _c("td")
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm btn-danger",
+                      attrs: {
+                        type: "button",
+                        href: "/subroom/" + i.id + "/delete"
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-trash" })]
+                  )
+                ])
               ]
             )
           }),

@@ -18,7 +18,7 @@
     <div class="card-body">
       <div class="row d-flex justify-content-center">
         <vue-qrcode
-          :value="'http://203.151.171.156/member/'+room_id"
+          :value="'http://203.151.171.156/member/' + room_id"
           class="rounded"
           alt="Cinque Terre"
           width="320"
@@ -51,7 +51,15 @@
             <td>{{ i.at_date }}</td>
             <td>{{ i.at_time }}</td>
             <td>{{ restatus(i.is_absent) }}</td>
-            <td></td>
+            <td>
+              <a
+                type="button"
+                class="btn btn-sm btn-danger"
+                :href="'/subroom/'+i.id+'/delete'"
+              >
+                <i class="fas fa-trash"></i>
+              </a>
+            </td>
           </tr>
         </tbody>
         <tfoot>
@@ -76,8 +84,8 @@ export default {
   name: "RoomDetail",
   props: ["rooms", "room_id"],
   components: { VueQrcode },
-  mounted(){
-      console.dir(this.rooms);
+  mounted() {
+    console.dir(this.rooms);
   },
   methods: {
     restatus(i) {

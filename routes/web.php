@@ -77,3 +77,4 @@ Route::get('/member/{username}/{passwd}/login', [\App\Http\Controllers\GetStuden
 Route::get('/member/{username}/room', [\App\Http\Controllers\GetStudentController::class, 'GetCheckIn'])->name('check_room');
 Route::get('/member/{id}/{username}', [\App\Http\Controllers\GetStudentController::class, 'CheckInRoom'])->name('check_in_room');
 Route::get('/member/{username}', [\App\Http\Controllers\GetStudentController::class, 'GetTeach'])->name('get_teach_room');
+Route::get('/room/{username}', [\App\Http\Controllers\GetStudentController::class, 'GetTeachView'])->name('get_teach_view_room');

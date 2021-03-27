@@ -30,6 +30,7 @@ Vue.component('on-class-room', require('./components/OnClassRoom.vue').default);
 Vue.component('scan-on-class', require('./components/ScanOnClass.vue').default);
 Vue.component('register-class', require('./components/RegisterClass.vue').default);
 Vue.component('room-detail', require('./components/RoomDetail.vue').default);
+Vue.component('view-room', require('./components/ViewOnRoom.vue').default);
 
 
 import UIkit from 'uikit';

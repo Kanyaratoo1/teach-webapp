@@ -89,6 +89,7 @@ class GetStudentController extends Controller
                 'student_id',
                 'room_id',
                 'room_id.subject_id',
+                'room_id.room_id',
                 'room_id.teach_id.user_id'
             )->where(['student_id' => $id])->get();
         }

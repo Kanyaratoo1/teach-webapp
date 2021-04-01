@@ -10,9 +10,6 @@
                             class="brand_logo" alt="Logo">
                     </div>
                 </div>
-                <div class="alert alert-success">
-  <strong>Success!</strong> Indicates a successful or positive action.
-</div>
                 <div class="d-flex justify-content-center form_container">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

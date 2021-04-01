@@ -16,3 +16,15 @@ yarn install
 
 ##
 yarn dev
+
+
+#### login
+ssh seiwa@203.151.171.156
+password:admin@spl
+
+###
+cd /var/www/html/teach
+
+### git pull
+git pull
+

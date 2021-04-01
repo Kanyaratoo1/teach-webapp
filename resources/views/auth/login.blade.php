@@ -10,6 +10,7 @@
                             class="brand_logo" alt="Logo">
                     </div>
                 </div>
+                <h1>test</h1>
                 <div class="d-flex justify-content-center form_container">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
